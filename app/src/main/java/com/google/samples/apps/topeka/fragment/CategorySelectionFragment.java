@@ -77,12 +77,12 @@ public class CategorySelectionFragment extends Fragment {
 
         final Pair[] pairs = TransitionHelper.createSafeTransitionParticipants(activity,
                 new Pair<>(toolbar, activity.getString(R.string.transition_toolbar)));
-        ActivityOptions sceneTransitionAnimation = ActivityOptions
-                .makeSceneTransitionAnimation(activity, pairs);
+//        ActivityOptions sceneTransitionAnimation = ActivityOptions
+//                .makeSceneTransitionAnimation(activity, pairs);
 
         // Start the activity with the participants, animating from one to the other.
-        final Bundle transitionBundle = sceneTransitionAnimation.toBundle();
-        activity.startActivity(QuizActivity.getStartIntent(activity, category), transitionBundle);
+    //    final Bundle transitionBundle = sceneTransitionAnimation.toBundle();
+        activity.startActivity(QuizActivity.getStartIntent(activity, category), null);
     }
 
 }

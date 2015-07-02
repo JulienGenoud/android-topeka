@@ -41,7 +41,7 @@ public class CategorySelectionActivity extends Activity {
     public static void start(Context context, Player player, ActivityOptions options) {
         Intent starter = new Intent(context, CategorySelectionActivity.class);
         starter.putExtra(EXTRA_PLAYER, player);
-        context.startActivity(starter, options.toBundle());
+        context.startActivity(starter);
     }
 
     public static void start(Context context, Player player) {
@@ -67,19 +67,19 @@ public class CategorySelectionActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        TextView scoreView = (TextView) findViewById(R.id.score);
+       // TextView scoreView = (TextView) findViewById(R.id.score);
         final int score = TopekaDatabaseHelper.getScore(this);
-        scoreView.setText(getString(R.string.x_points, score));
+       // scoreView.setText(getString(R.string.x_points, score));
     }
 
     private void setUpToolbar(Player player) {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_player);
-        setActionBar(toolbar);
+       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_player);
+      //  setActionBar(toolbar);
         //noinspection ConstantConditions
         getActionBar().setDisplayShowTitleEnabled(false);
-        final AvatarView avatarView = (AvatarView) toolbar.findViewById(R.id.avatar);
-        avatarView.setImageDrawable(getDrawable(player.getAvatar().getDrawableId()));
-        ((TextView) toolbar.findViewById(R.id.title)).setText(getDisplayName(player));
+      //  final AvatarView avatarView = (AvatarView) toolbar.findViewById(R.id.avatar);
+       // avatarView.setImageDrawable(getDrawable(player.getAvatar().getDrawableId()));
+      //  ((TextView) toolbar.findViewById(R.id.title)).setText(getDisplayName(player));
     }
 
     @Override

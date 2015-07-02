@@ -28,11 +28,13 @@ public class AvatarView extends ImageView implements Checkable {
 
     public AvatarView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initOutlineProvider();
+       // initOutlineProvider();
     }
 
     private void initOutlineProvider() {
-        setOutlineProvider(new AvatarOutlineProvider());
+
+       // V21 !!
+       // setOutlineProvider(new AvatarOutlineProvider());
         setClipToOutline(true);
     }
 
@@ -55,10 +57,5 @@ public class AvatarView extends ImageView implements Checkable {
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
-        if (mChecked) {
-            Drawable border = getResources().getDrawable(R.drawable.selector_avatar, null);
-            border.setBounds(0, 0, getWidth(), getHeight());
-            border.draw(canvas);
-        }
     }
 }

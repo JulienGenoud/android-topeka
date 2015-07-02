@@ -43,7 +43,7 @@ public class FloatingActionButton extends ImageView {
         super(context, attrs, defStyle);
         setFocusable(true);
         setClickable(true);
-        setOutlineProvider(new FabOutlineProvider());
+//      setOutlineProvider(new FabOutlineProvider());
         setClipToOutline(true);
         setScaleType(ScaleType.CENTER_INSIDE);
         setBackgroundResource(R.drawable.fab_background);

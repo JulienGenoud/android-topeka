@@ -81,7 +81,7 @@ public class SignInFragment extends Fragment {
                 OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom,
-                    int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
                 v.removeOnLayoutChangeListener(this);
                 setUpGridView(getView());
             }
@@ -133,11 +133,11 @@ public class SignInFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // showing the floating action button if text is entered
-                if (count > 0) {
-                    mDoneFab.setVisibility(View.VISIBLE);
-                } else {
-                    mDoneFab.setVisibility(View.GONE);
-                }
+//                if (count > 0) {
+//                    mDoneFab.setVisibility(View.VISIBLE);
+//                } else {
+//                    mDoneFab.setVisibility(View.GONE);
+//                }
             }
 
             @Override
@@ -150,27 +150,36 @@ public class SignInFragment extends Fragment {
         mFirstName.addTextChangedListener(textWatcher);
         mLastInitial = (EditText) view.findViewById(R.id.last_initial);
         mLastInitial.addTextChangedListener(textWatcher);
-        mDoneFab = (DoneFab) view.findViewById(R.id.done);
-        mDoneFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.done:
-                        savePlayer(getActivity());
-                        if (null == mSelectedAvatarView) {
-                            performSignInWithTransition(mAvatarGrid.getChildAt(
-                                    mSelectedAvatar.ordinal()));
-                        } else {
-                            performSignInWithTransition(mSelectedAvatarView);
-                        }
-                        break;
-                    default:
-                        throw new UnsupportedOperationException(
-                                "The onClick method has not been implemented for " + getResources()
-                                        .getResourceEntryName(v.getId()));
-                }
-            }
-        });
+
+
+        mFirstName.setText("toto");
+        mLastInitial.setText("toto");
+
+        final Activity activity = getActivity();
+        //                .makeSceneTransitionAnimation(activity, pairs);
+        CategorySelectionActivity.start(activity, mPlayer, null);
+
+//        mDoneFab = (DoneFab) view.findViewById(R.id.done);
+//        mDoneFab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                switch (v.getId()) {
+//                    case R.id.done:
+//                        savePlayer(getActivity());
+//                        if (null == mSelectedAvatarView) {
+//                            performSignInWithTransition(mAvatarGrid.getChildAt(
+//                                    mSelectedAvatar.ordinal()));
+//                        } else {
+//                            performSignInWithTransition(mSelectedAvatarView);
+//                        }
+//                        break;
+//                    default:
+//                        throw new UnsupportedOperationException(
+//                                "The onClick method has not been implemented for " + getResources()
+//                                        .getResourceEntryName(v.getId()));
+//                }
+//            }
+//        });
     }
 
     private void setUpGridView(View container) {
@@ -193,9 +202,9 @@ public class SignInFragment extends Fragment {
 
         final Pair[] pairs = TransitionHelper.createSafeTransitionParticipants(activity,
                 new Pair<>(v, activity.getString(R.string.transition_avatar)));
-        ActivityOptions activityOptions = ActivityOptions
-                .makeSceneTransitionAnimation(activity, pairs);
-        CategorySelectionActivity.start(activity, mPlayer, activityOptions);
+//        ActivityOptions activityOptions = ActivityOptions
+//                .makeSceneTransitionAnimation(activity, pairs);
+        CategorySelectionActivity.start(activity, mPlayer, null);
     }
 
     private void initContents() {

@@ -20,37 +20,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.widget.Toolbar
-        android:id="@+id/toolbar_player"
-        style="@style/Topeka.TextAppearance.Title"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/topeka_primary"
-        android:elevation="@dimen/elevation_header">
+    <!--<android.widget.Toolbar-->
+        <!--android:id="@+id/toolbar_player"-->
+        <!--style="@style/Topeka.TextAppearance.Title"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?android:attr/actionBarSize"-->
+        <!--android:background="@color/topeka_primary"-->
+        <!--android:elevation="@dimen/elevation_header">-->
 
-        <com.google.samples.apps.topeka.widget.AvatarView
-            android:id="@+id/avatar"
-            android:layout_width="@dimen/size_fab"
-            android:layout_height="@dimen/size_fab"
-            android:layout_marginEnd="@dimen/spacing_double"
-            android:transitionName="@string/transition_avatar" />
+        <!--<com.google.samples.apps.topeka.widget.AvatarView-->
+            <!--android:id="@+id/avatar"-->
+            <!--android:layout_width="@dimen/size_fab"-->
+            <!--android:layout_height="@dimen/size_fab"-->
+            <!--android:layout_marginEnd="@dimen/spacing_double"-->
+            <!--android:transitionName="@string/transition_avatar" />-->
 
-        <TextView
-            android:id="@+id/title"
-            style="@style/Topeka.TextAppearance.Title.Inverse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start" />
+        <!--<TextView-->
+            <!--android:id="@+id/title"-->
+            <!--style="@style/Topeka.TextAppearance.Title.Inverse"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical|start" />-->
 
-        <TextView
-            android:id="@+id/score"
-            style="@style/Topeka.TextAppearance.Title.Inverse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|end"
-            android:paddingEnd="@dimen/spacing_micro"
-            android:paddingStart="@dimen/spacing_micro" />
-    </android.widget.Toolbar>
+        <!--<TextView-->
+            <!--android:id="@+id/score"-->
+            <!--style="@style/Topeka.TextAppearance.Title.Inverse"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical|end"-->
+            <!--android:paddingEnd="@dimen/spacing_micro"-->
+            <!--android:paddingStart="@dimen/spacing_micro" />-->
+    <!--</android.widget.Toolbar>-->
 
     <FrameLayout
         android:id="@+id/quiz_container"

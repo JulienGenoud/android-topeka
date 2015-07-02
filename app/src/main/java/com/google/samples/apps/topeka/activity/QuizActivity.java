@@ -59,14 +59,12 @@ public class QuizActivity extends Activity {
         @Override
         public void onClick(final View v) {
             switch (v.getId()) {
-                case R.id.fab_quiz:
-                    startQuizFromClickOn(v);
-                    break;
                 case R.id.submitAnswer:
                     submitAnswer();
                     break;
                 case R.id.quiz_done:
-                    finishAfterTransition();
+
+
                     break;
                 case UNDEFINED:
                     final CharSequence contentDescription = v.getContentDescription();
@@ -92,8 +90,8 @@ public class QuizActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mCategoryId = getIntent().getStringExtra(Category.TAG);
-        mInterpolator = AnimationUtils.loadInterpolator(this,
-                android.R.interpolator.fast_out_slow_in);
+       // mInterpolator = AnimationUtils.loadInterpolator(this,
+      //          android.R.interpolator.fast_out_slow_in);
         if (null != savedInstanceState) {
             mSavedStateIsPlaying = savedInstanceState.getBoolean(STATE_IS_PLAYING);
         }
@@ -146,8 +144,6 @@ public class QuizActivity extends Activity {
         int centerX = (view.getLeft() + view.getRight()) / 2;
         int centerY = (view.getTop() + view.getBottom()) / 2;
         int finalRadius = Math.max(fragmentContainer.getWidth(), fragmentContainer.getHeight());
-        mCircularReveal = ViewAnimationUtils.createCircularReveal(
-                fragmentContainer, centerX, centerY, 0, finalRadius);
         fragmentContainer.setVisibility(View.VISIBLE);
         view.setVisibility(View.GONE);
 
@@ -163,19 +159,14 @@ public class QuizActivity extends Activity {
         mCircularReveal.start();
 
         // the toolbar should not have more elevation than the content while playing
-        mToolbar.setElevation(0);
     }
 
-    public void elevateToolbar() {
-        mToolbar.setElevation(getResources().getDimension(R.dimen.elevation_header));
-    }
 
     private void initQuizFragment() {
         mQuizFragment = QuizFragment.newInstance(mCategoryId,
                 new QuizFragment.SolvedStateListener() {
                     @Override
                     public void onCategorySolved() {
-                        elevateToolbar();
                         displayDoneFab();
                     }
 
@@ -210,7 +201,6 @@ public class QuizActivity extends Activity {
                     }
                 });
         // the toolbar should not have more elevation than the content while playing
-        mToolbar.setElevation(0);
     }
 
     /**
@@ -221,12 +211,10 @@ public class QuizActivity extends Activity {
     }
 
     private void submitAnswer() {
-        elevateToolbar();
         if (!mQuizFragment.showNextPage()) {
             mQuizFragment.showSummary();
             return;
         }
-        mToolbar.setElevation(0);
     }
 
     private void populate(String categoryId) {
@@ -237,7 +225,6 @@ public class QuizActivity extends Activity {
         Category category = TopekaDatabaseHelper.getCategoryWith(this, categoryId);
         setTheme(category.getTheme().getStyleId());
         initLayout(category.getId());
-        initToolbar(category);
     }
 
     private void initLayout(String categoryId) {
@@ -246,10 +233,9 @@ public class QuizActivity extends Activity {
         int resId = getResources().getIdentifier(IMAGE_CATEGORY + categoryId, DRAWABLE,
                 getApplicationContext().getPackageName());
         mIcon.setImageResource(resId);
-        mQuizFab = (FloatingActionButton) findViewById(R.id.fab_quiz);
-        mQuizFab.setImageResource(R.drawable.ic_play);
-        mQuizFab.setVisibility(mSavedStateIsPlaying ? View.GONE : View.VISIBLE);
-        mQuizFab.setOnClickListener(mOnClickListener);
+////        mQuizFab.setImageResource(R.drawable.ic_play);
+//        mQuizFab.setVisibility(mSavedStateIsPlaying ? View.GONE : View.VISIBLE);
+//        mQuizFab.setOnClickListener(mOnClickListener);
         mIcon.setScaleX(0);
         mIcon.setScaleY(0);
         mIcon.setImageResource(resId);
@@ -257,13 +243,5 @@ public class QuizActivity extends Activity {
                 .setStartDelay(300);
     }
 
-    private void initToolbar(Category category) {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar_activity_quiz);
-        mToolbar.setTitle(category.getName());
-        mToolbar.setNavigationOnClickListener(mOnClickListener);
-        if (mSavedStateIsPlaying) {
-            // the toolbar should not have more elevation than the content while playing
-            mToolbar.setElevation(0);
-        }
-    }
+
 }
